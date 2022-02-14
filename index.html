@@ -1,74 +1,173 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 <head>
-<title>WEB1- Welcome</title>
-<meta charset="utf-8">
-<script src="color.js"></script>
-<style>
-body{
-  margin:0;
-}
-a{
-  color:black;
-  text-decoration: none;
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-#active {
-  color:red;
-}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
-h1{
-  font-size:45px;
-  text-align: center;
-  border-bottom: 1px solid gray;
-  margin:0;
-  padding:20px
-}
-ol {
-  border-right: 1px solid gray;
-  width:100px;
-  margin:0;
-  padding:20px
-}
-#grid {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-}
-#grid ol{
-  padding-left:33px;
-}
-#grid #article{
-  padding-left: 25px;
-}
-@media (max-width:800px){
-  #grid {
-    display: block;
-    }
-  ol  {border-right: none;
-    }
-  h1{ border-bottom: none;
-    }
-}
-</style>
+    <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        .mytitle {
+            color: white;
 
+            height:250px;
+            width:100%;
+
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://movie-phinf.pstatic.net/20210715_95/1626338192428gTnJl_JPEG/movie_image.jpg");
+            background-position: center;
+            background-size: cover;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .mytitle > button {
+            width: 200px;
+            height: 50px;
+
+            background-color: transparent;
+            color: white;
+            border-radius: 50px;
+            border: 1px solid white;
+
+            margin-top: 10px;
+        }
+        .mytitle > button:hover {
+            border: 2px solid white;
+        }
+        .mycomment {
+            color :gray;
+        }
+        .wrap {
+            max-width: 1200px;
+            width: 95%;
+            margin: 20px auto 0px auto;
+        }
+        .mypost {
+            max-width: 500px;
+            width: 95%;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+
+            box-shadow: 0px 0px 3px 0px gray;
+
+            display: none;
+        }
+        .a {
+            margin: 10px auto 10px auto;
+        }
+        .btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            margin-top: 10px;
+        }
+        .btn > button {
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            listing();
+        });
+
+        function listing() {
+             $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/web/api/movie",
+                data: {},
+                success: function (response) {
+                    let rows = response['movies']
+                    for (let i = 0; i < rows.length; i++) {
+                        let title = rows[i]['title']
+                        let star = rows[i]['star']
+                        let image = rows[i]['image']
+                        let comment = rows[i]['comment']
+                        let desc = rows[i]['desc']
+
+                        let star_image = '⭐'.repeat(star)
+
+                        let temp_html = `<div class="col">
+                                            <div class="card">
+                                                <img src=${image} class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${title}</h5>
+                                                    <p class="card-text">${desc}</p>
+                                                    <P>${star_image}</P>
+                                                    <P class="mycomment">${comment}</P>
+                                                </div>
+                                            </div>
+                                        </div>`
+                        $('#cardbox').append(temp_html)
+                    }
+                }
+             })
+        }
+
+        function open_box(){
+            $('#postbox').show()
+        }
+        function close_box() {
+            $('#postbox').hide()
+        }
+    </script>
 </head>
+
 <body>
-  <h1><a href="index.html">WEB</a></h1>
-  <input id="night_day" type="button" value="NIGHT" onclick="
-  nightDayHandler(this);
- ">
-<div id="grid">
-<ol>
-  <li> <a href="1.html">HTML</a> </li>
-  <li><a href="2.html">CSS</a></li>
-  <li><a href="3.html">Java Script</a></li>
-</ol>
-<div id="article">
-<h2>WEB</h2>
-<p>
-The World Wide Web (WWW), commonly known as the Web, is an information system where documents and other web resources are identified by Uniform Resource Locators, which may be interlinked by hyperlinks, and are accessible over the Internet.[1][2] The resources of the Web are transferred via the Hypertext Transfer Protocol (HTTP), may be accessed by users by a software application called a web browser, and are published by a software application called a web server. The World Wide Web is not synonymous with the Internet, which pre-dated the Web in some form by over two decades and upon the technologies of which the Web is built.
- </p>
-</div>
-</div>
+    <div class="mytitle">
+        <h1>내 생애 최고의 영화들</h1>
+        <button onclick="open_box()">영화 기록하기</button>
+    </div>
+    <div class="mypost" id="postbox">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="url" placeholder="name@example.com">
+            <label for="floatingInput">영화url</label>
+
+            <div class="a">
+                <label class="input-group-text" for="inputGroupSelect01">별점</label>
+                <select class="form-select" id="inputGroupSelect01">
+                    <option selected>--선택하기--</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                          style="height: 100px"></textarea>
+                <label for="floatingTextarea2">코멘트</label>
+            </div>
+
+            <div class="btn">
+            <button type="button" class="btn btn-dark">기록하기</button>
+            <button type="button"onclick="close_box()" class="btn btn-outline-dark" >닫기</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="wrap">
+         <div class="row row-cols-1 row-cols-md-4 g-4" id="cardbox">
+
+        </div>
+    </div>
+
 </body>
+
 </html>
