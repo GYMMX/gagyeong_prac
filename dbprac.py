@@ -1,6 +1,6 @@
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.0wh1g.mongodb.net/Cluster0?retryWrites=true&w=majority')
-db = client.dbspartas
+client = MongoClient('mongodb+srv://test:sparta@cluster0.f7ehu.mongodb.net/Cluster0?retryWrites=true&w=majority')
+db = client.dbsparta
 
 # 저장 - 예시
 doc = {'name':'bobby','age':21}
