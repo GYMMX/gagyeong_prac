@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>독독,,개세요? | 작성상세페이지</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/60f73b0952.js" crossorigin="anonymous"></script>
+</head>
+<link rel="stylesheet" type="text/css" href="posting.css">
+<style>
+    input {
+        width: 350px;
+        margin-left: 50px;
+    }
+</style>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="/"><i class="fa-solid fa-dog"></i> 독독,,개세요??</a>
+       <i class="fa-solid fa-delete-right"></i>
+    </nav>
+
+    <div class="wrap">
+        <!-- img-preview -->
+        <div class="img-container">
+            <div class="img-wrap">
+                <img src="왕자.jpg" alt="이미지" id="img-preview">
+            </div>
+        </div>
+        <!-- posting-box -->
+        <div class="posting-box">
+            <div class="form-group">
+                <label>이름</label>
+                <textarea class="form-control" id="name" readonly>왕자</textarea>
+            </div>
+            <div class="form-group mt-2">
+                <label>번호</label>
+                <textarea class="form-control" id="number" readonly>010-1234-5678</textarea>
+            </div>
+            <div class="form-group mt-2" >
+                <label>시간</label>
+                <textarea  class="form-control" id="time" readonly>오후 6시30분</textarea>
+            </div>
+            <div class="form-group mt-2">
+                <label>장소</label>
+                <textarea class="form-control" id="meeting" readonly>일산 호수공원에서</textarea>
+            </div>
+            <div class="form-group mt-2">
+                <label>성격</label>
+                <textarea class="form-control" id="character" readonly>사람은 좋아하지만 다른 강아지들은 싫어해요.. 유독 수컷은 더더욱ㅠㅠ</textarea>
+                <div class="btn-wrap">
+                    <button type="button" class="btn btn-secondary btn-lg mr-3">수정하기</button>
+                <button type="button" class="btn btn-dark btn-lg" id="posting-btn">삭제하기</button>
+
+             </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
